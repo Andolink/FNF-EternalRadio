@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Soeur.png">
+<SubTexture name="Soeur down0000" x="1189" y="1314" width="1164" height="1009" frameX="-98" frameY="-431" frameWidth="1426" frameHeight="1443" />
+<SubTexture name="Soeur idle0000" x="997" y="0" width="992" height="1257" frameX="-187" frameY="-168" frameWidth="1426" frameHeight="1443" />
+<SubTexture name="Soeur right0000" x="0" y="1314" width="1189" height="1100" frameX="-159" frameY="-331" frameWidth="1426" frameHeight="1443" />
+<SubTexture name="Soeur up0000" x="0" y="0" width="997" height="1314" frameX="-142" frameY="-128" frameWidth="1426" frameHeight="1443" />
+<SubTexture name="Soeur left0000" x="1989" y="0" width="1087" height="1196" frameX="-24" frameY="-231" frameWidth="1426" frameHeight="1443" />
+</TextureAtlas>
