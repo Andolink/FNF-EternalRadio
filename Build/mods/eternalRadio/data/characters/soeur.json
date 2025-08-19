@@ -1,0 +1,64 @@
+{
+  "version": "1.0.0",
+  "name": "Soeur",
+  "assetPath": "characters/Soeur",
+  "singTime": 8.0,
+  "scale": 0.45,
+  "offsets": [ 0, 200 ],
+  "cameraOffsets": [ 0, 200 ],
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Soeur idle",
+      "offsets": [ 0, 0 ]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "Soeur left",
+      "offsets": [ 0, 0 ]
+    },
+    {
+      "name": "singLEFT-hold",
+      "prefix": "Soeur left",
+      "looped": true,
+      "frameIndices": [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
+      "offsets": [ 0, 0 ]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "Soeur down",
+      "offsets": [ 0, 0 ]
+    },
+    {
+      "name": "singDOWN-hold",
+      "prefix": "Soeur down",
+      "looped": true,
+      "frameIndices": [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
+      "offsets": [ 0, 0 ]
+    },
+    {
+      "name": "singUP",
+      "prefix": "Soeur up",
+      "offsets": [ 0, 0 ]
+    },
+    {
+      "name": "singUP-hold",
+      "prefix": "Soeur up",
+      "looped": true,
+      "frameIndices": [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
+      "offsets": [ 0, 0 ]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "Soeur right",
+      "offsets": [ 0, 0 ]
+    },
+    {
+      "name": "singRIGHT-hold",
+      "prefix": "Soeur right",
+      "looped": true,
+      "frameIndices": [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
+      "offsets": [ 0, 0 ]
+    }
+  ]
+}
