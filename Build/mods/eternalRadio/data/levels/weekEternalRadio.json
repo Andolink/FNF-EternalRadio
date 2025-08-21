@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "SOEUR'S LOCATION'",
+  "name": "ETERNAL RADIO",
   "titleAsset": "storymenu/titles/week1",
   "props": [
     {
@@ -53,5 +53,5 @@
     }
   ],
   "background": "#F9CF51",
-  "songs": ["quoicoubet"]
+  "songs": ["billionmustshine"]
 }

@@ -1,7 +1,7 @@
 {
   "version": "2.2.4",
-  "songName": "Quoicoubet",
-  "artist": "soeur",
+  "songName": "CUT4ZALGO",
+  "artist": "ptite soeur",
   "divisions": 96,
   "looped": false,
   "offsets": {
@@ -18,7 +18,7 @@
       "hard"
     ],
     "characters": {
-      "player": "soeur",
+      "player": "bf",
       "girlfriend": "gf",
       "opponent": "soeur",
       "instrumental": "",
@@ -34,7 +34,6 @@
     "noteStyle": "funkin",
     "ratings": {
       "easy": 0,
-      "hard": 0,
       "normal": 0
     },
     "previewStart": 0,
@@ -46,7 +45,7 @@
     {
       "t": 0,
       "b": 0,
-      "bpm": 144,
+      "bpm": 120,
       "n": 4,
       "d": 4,
       "bt": [
