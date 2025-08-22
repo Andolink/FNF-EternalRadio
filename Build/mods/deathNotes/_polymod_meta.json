@@ -1,0 +1,8 @@
+{
+    "title": "Death Notes",
+    "description": "Adds new notes to the game that kill you when pressed.",
+    "author": "labrosggv",
+    "api_version": "0.1.0",
+    "mod_version": "1.0.0",
+    "license": "CC BY 4.0,MIT"
+}
