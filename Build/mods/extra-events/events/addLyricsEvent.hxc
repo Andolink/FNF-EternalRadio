@@ -45,6 +45,10 @@ class AddLyricsEvent extends ScriptedSongEvent {
   public var DEFAULT_HAS_ANTIALIASING:Bool = false;
   
   public var DEFAULT_ISCENTERED:Bool = false; // No real point in having custom x and y position. ISCENTERED is used for if you want the lyric to be the on the middle of the screen
+  public var DEFAULT_OFFSET_POS:Bool = false;
+  public var DEFAULT_OFFSET_XPOS:Float = 0.0;
+  public var DEFAULT_OFFSET_YPOS:Float = 0.0;
+
   public var DEFAULT_OPACITY:Float = 1.0;
   public var DEFAULT_LATTERSPACING:Float = 0.0;
   
@@ -77,7 +81,12 @@ class AddLyricsEvent extends ScriptedSongEvent {
     var isBold:Bool = data.getBool('isBold') != null ? data.getBool('isBold') : DEFAULT_BOLD;
     var hasAntiAliasing:Bool = data.getBool('hasAntiAliasing') != null ? data.getBool('hasAntiAliasing') : DEFAULT_HAS_ANTIALIASING;
     
-    var isCentered:Bool = data.getBool('isCentered') != null ? data.getBool('isCentered') : DEFAULT_ISCENTERED;
+    var isCentered:Bool     = data.getBool('isCentered')    != null ? data.getBool('isCentered')    : DEFAULT_ISCENTERED;
+    
+    var offsetPos:Bool      = data.getBool('offsetPos')   != null ? data.getBool('offsetPos')   : DEFAULT_OFFSET_POS;
+    var offsetPosX:Float    = data.getFloat('offsetPosX') != null ? data.getFloat('offsetPosX') : DEFAULT_OFFSET_XPOS;
+    var offsetPosY:Float    = data.getFloat('offsetPosY') != null ? data.getFloat('offsetPosY') : DEFAULT_OFFSET_YPOS;
+    
     var opacity:Float = data.getFloat('opacity') != null ? data.getFloat('opacity') : DEFAULT_OPACITY;
     var letterSpacing:Float = data.getFloat('letterSpacing') != null ? data.getFloat('letterSpacing') : DEFAULT_LATTERSPACING;
     
@@ -160,7 +169,22 @@ class AddLyricsEvent extends ScriptedSongEvent {
     lyricObj.antialiasing = hasAntiAliasing;
     lyricObj.cameras = [PlayState.instance.camHUD];
     lyricObj.screenCenter(isCentered ? 0x11 : 0x01); // I love ternary operators
-    if (!isCentered) lyricObj.y = (Preferences.downscroll ? FlxG.height * 0.2 : FlxG.height * 0.7); // Dynamic positioning
+
+    if (!isCentered) 
+    {
+        lyricObj.y = (Preferences.downscroll ? FlxG.height * 0.2 : FlxG.height * 0.7); // Dynamic positioning
+    }
+
+    if (Preferences.downscroll)
+    {
+        lyricObj.x -= offsetPosX;
+        lyricObj.y -= offsetPosY;
+    }
+    else 
+    {
+        lyricObj.x += offsetPosX;
+        lyricObj.y += offsetPosY;
+    }
 
     if (PlayState.instance.opponentStrumline == null) return;
     for (strumLine in [PlayState.instance.playerStrumline, PlayState.instance.opponentStrumline]) {
@@ -267,6 +291,24 @@ class AddLyricsEvent extends ScriptedSongEvent {
         title: "Place in center", /* Imagine if I could explain any of this, base game devs, please, let me add tooltips for these things */
         defaultValue: false,
         type: "bool"
+      },
+      {
+        name: "offsetPos",
+        title: "Offset Enabled", 
+        defaultValue: false,
+        type: "bool"
+      },
+      {
+        name: "offsetPosX",
+        title: "Offset X", 
+        defaultValue: 0.0,
+        type: "float"
+      },
+      {
+        name: "offsetPosY",
+        title: "Offset Y",
+        defaultValue: 0.0,
+        type: "float"
       },
       {
         name: 'opacity',
