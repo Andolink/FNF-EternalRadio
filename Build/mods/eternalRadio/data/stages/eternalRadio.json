@@ -1,0 +1,239 @@
+{
+  "version": "1.0.2",
+  "name": "Unnamed",
+  "props": [
+    {
+      "alpha": 1,
+      "angle": 0,
+      "animType": "sparrow",
+      "animations": [      ],
+      "assetPath": "image2",
+      "blend": "",
+      "color": "#FFFFFF",
+      "danceEvery": 0,
+      "flipX": false,
+      "flipY": false,
+      "isPixel": false,
+      "name": "BackColor",
+      "position": [
+        -723,
+        -756
+      ],
+      "scale": 1,
+      "scroll": [
+        0,
+        0
+      ],
+      "startingAnimation": "",
+      "zIndex": 0
+    },
+    {
+      "alpha": 1,
+      "angle": 0,
+      "animType": "sparrow",
+      "animations": [      ],
+      "assetPath": "image4",
+      "blend": "",
+      "color": "#FFFFFF",
+      "danceEvery": 0,
+      "flipX": false,
+      "flipY": false,
+      "isPixel": false,
+      "name": "Clouds",
+      "position": [
+        -743,
+        -530
+      ],
+      "scale": 1,
+      "scroll": [
+        0.1,
+        0.1
+      ],
+      "startingAnimation": "",
+      "zIndex": 1
+    },
+    {
+      "alpha": 1,
+      "angle": 0,
+      "animType": "sparrow",
+      "animations": [      ],
+      "assetPath": "image3",
+      "blend": "",
+      "color": "#FFFFFF",
+      "danceEvery": 0,
+      "flipX": false,
+      "flipY": false,
+      "isPixel": false,
+      "name": "WeaponBack",
+      "position": [
+        -723,
+        -821
+      ],
+      "scale": 1,
+      "scroll": [
+        0.25,
+        0.25
+      ],
+      "startingAnimation": "",
+      "zIndex": 2
+    },
+    {
+      "alpha": 1,
+      "angle": 0,
+      "animType": "sparrow",
+      "animations": [      ],
+      "assetPath": "image1",
+      "blend": "",
+      "color": "#FFFFFF",
+      "danceEvery": 0,
+      "flipX": false,
+      "flipY": false,
+      "isPixel": false,
+      "name": "Tank",
+      "position": [
+        -708,
+        -700
+      ],
+      "scale": 1,
+      "scroll": [
+        0.8,
+        0.8
+      ],
+      "startingAnimation": "",
+      "zIndex": 4
+    },
+    {
+      "alpha": 1,
+      "angle": 0,
+      "animType": "sparrow",
+      "animations": [      ],
+      "assetPath": "image0",
+      "blend": "",
+      "color": "#FFFFFF",
+      "danceEvery": 0,
+      "flipX": false,
+      "flipY": false,
+      "isPixel": false,
+      "name": "Ground",
+      "position": [
+        -715,
+        -754
+      ],
+      "scale": 1,
+      "scroll": [
+        1.01,
+        1.01
+      ],
+      "startingAnimation": "",
+      "zIndex": 5
+    },
+    {
+      "alpha": 1,
+      "angle": 0,
+      "animType": "sparrow",
+      "animations": [      ],
+      "assetPath": "image6",
+      "blend": "",
+      "color": "#FFFFFF",
+      "danceEvery": 0,
+      "flipX": false,
+      "flipY": false,
+      "isPixel": false,
+      "name": "FakeBack",
+      "position": [
+        -717,
+        -695
+      ],
+      "scale": 1,
+      "scroll": [
+        0.9,
+        0.9
+      ],
+      "startingAnimation": "",
+      "zIndex": 6
+    },
+    {
+      "alpha": 1,
+      "angle": 0,
+      "animType": "sparrow",
+      "animations": [      ],
+      "assetPath": "image5",
+      "blend": "",
+      "color": "#FFFFFF",
+      "danceEvery": 0,
+      "flipX": false,
+      "flipY": false,
+      "isPixel": false,
+      "name": "WeaponFront",
+      "position": [
+        -706,
+        -755
+      ],
+      "scale": 1,
+      "scroll": [
+        1.1,
+        1.1
+      ],
+      "startingAnimation": "",
+      "zIndex": 350
+    }
+  ],
+  "characters": {
+    "bf": {
+      "alpha": 1,
+      "angle": 0,
+      "cameraOffsets": [
+        -100,
+        -100
+      ],
+      "position": [
+        1150,
+        863
+      ],
+      "scale": 1,
+      "scroll": [
+        1,
+        1
+      ],
+      "zIndex": 300
+    },
+    "dad": {
+      "alpha": 1,
+      "angle": 0,
+      "cameraOffsets": [
+        150,
+        -100
+      ],
+      "position": [
+        335,
+        885
+      ],
+      "scale": 1,
+      "scroll": [
+        1,
+        1
+      ],
+      "zIndex": 200
+    },
+    "gf": {
+      "alpha": 1,
+      "angle": 0,
+      "cameraOffsets": [
+        0,
+        0
+      ],
+      "position": [
+        751.5,
+        787
+      ],
+      "scale": 1,
+      "scroll": [
+        1,
+        1
+      ],
+      "zIndex": 100
+    }
+  },
+  "cameraZoom": 0.75,
+  "directory": "shared"
+}
