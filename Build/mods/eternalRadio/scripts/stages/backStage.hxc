@@ -1,0 +1,62 @@
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.math.FlxAngle;
+import funkin.Paths;
+import funkin.play.PlayState;
+import funkin.play.stage.Stage;
+import flixel.addons.display.FlxTiledSprite;
+
+class BackStageStage extends Stage
+{
+	function new()
+	{
+		super('backStage');
+	}
+
+	function onCreate(event:ScriptEvent):Void
+	{
+		super.onCreate(event);
+	}
+
+	var cadreBlood:FlxSprite; 
+  	var clouds:FlxTiledSprite;
+
+	override function buildStage()
+	{
+		super.buildStage();
+/*
+		clouds = new FlxTiledSprite(Paths.image('tankClouds'), 3200, 235, true, false);
+		clouds.setPosition(-1100, 20);
+		clouds.scrollFactor.set(0.25, 0.25);
+		clouds.zIndex = 12;
+
+		clouds.velocity.x = 8;*/
+
+		cadreBlood = new FlxSprite();
+		cadreBlood.loadGraphic(Paths.image('cadreBlood'));
+		cadreBlood.setPosition(0, 0);
+    	cadreBlood.scrollFactor.set(0, 0);
+		cadreBlood.width = FlxG.initialWidth;
+		cadreBlood.height = FlxG.initialHeight;
+		cadreBlood.zIndex = 600;
+
+		cadreBlood.cameras = [PlayState.instance.camHUD];
+
+		PlayState.instance.add(cadreBlood);
+	}
+
+	function onUpdate(event:UpdateScriptEvent):Void
+	{
+		super.onUpdate(event);
+	}
+
+	function onBeatHit(event:SongTimeScriptEvent):Void
+	{
+		super.onBeatHit(event);
+	}
+
+	function onSongRetry(event:ScriptEvent)
+	{
+		super.onSongRetry(event);
+	}
+}
