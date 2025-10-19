@@ -1,13 +1,13 @@
 {
   "version": "1.0.2",
-  "name": "backStage",
+  "name": "",
   "props": [
     {
       "alpha": 1,
       "angle": 0,
       "animType": "sparrow",
-      "animations": [],
-      "assetPath": "image0",
+      "animations": [      ],
+      "assetPath": "image6",
       "blend": "",
       "color": "#FFFFFF",
       "danceEvery": 0,
@@ -16,8 +16,8 @@
       "isPixel": false,
       "name": "back color",
       "position": [
-        -783,
-        -708
+        -750,
+        -681
       ],
       "scale": 1,
       "scroll": [
@@ -31,7 +31,7 @@
       "alpha": 1,
       "angle": 0,
       "animType": "sparrow",
-      "animations": [],
+      "animations": [      ],
       "assetPath": "image2",
       "blend": "",
       "color": "#FFFFFF",
@@ -56,8 +56,8 @@
       "alpha": 1,
       "angle": 0,
       "animType": "sparrow",
-      "animations": [],
-      "assetPath": "image1",
+      "animations": [      ],
+      "assetPath": "image5",
       "blend": "",
       "color": "#FFFFFF",
       "danceEvery": 0,
@@ -66,8 +66,8 @@
       "isPixel": false,
       "name": "tank",
       "position": [
-        498,
-        -132
+        417,
+        -231
       ],
       "scale": 1,
       "scroll": [
@@ -81,7 +81,7 @@
       "alpha": 1,
       "angle": 0,
       "animType": "sparrow",
-      "animations": [],
+      "animations": [      ],
       "assetPath": "image3",
       "blend": "",
       "color": "#FFFFFF",
@@ -106,7 +106,7 @@
       "alpha": 1,
       "angle": 0,
       "animType": "sparrow",
-      "animations": [],
+      "animations": [      ],
       "assetPath": "image4",
       "blend": "",
       "color": "#FFFFFF",
@@ -131,8 +131,8 @@
       "alpha": 1,
       "angle": 0,
       "animType": "sparrow",
-      "animations": [],
-      "assetPath": "image5",
+      "animations": [      ],
+      "assetPath": "image1",
       "blend": "",
       "color": "#FFFFFF",
       "danceEvery": 0,
@@ -141,8 +141,8 @@
       "isPixel": false,
       "name": "foreground",
       "position": [
-        -729,
-        147
+        -1371,
+        -57
       ],
       "scale": 1,
       "scroll": [
@@ -151,6 +151,52 @@
       ],
       "startingAnimation": "",
       "zIndex": 500
+    },
+    {
+      "alpha": 1,
+      "angle": 0,
+      "animType": "sparrow",
+      "animations": [
+        {
+          "offsets": [ 0, 0 ],
+          "prefix": "tankEye lookDad",
+          "frameIndices": [ 0, 1, 2, 3 ],
+          "looped": true,
+          "flipX": false,
+          "name": "lookDad",
+          "flipY": false,
+          "frameRate": 12
+        },
+        {
+          "offsets": [ 0, 0 ],
+          "prefix": "tankEye lookBf",
+          "frameIndices": [ 0, 1, 2, 3, 4 ],
+          "looped": true,
+          "flipX": false,
+          "name": "lookBf",
+          "flipY": false,
+          "frameRate": 12
+        }
+      ],
+      "assetPath": "tankEye",
+      "blend": "",
+      "color": "#FFFFFF",
+      "danceEvery": 0,
+      "flipX": false,
+      "flipY": false,
+      "isPixel": false,
+      "name": "tankEye",
+      "position": [
+        1044,
+        228
+      ],
+      "scale": 1,
+      "scroll": [
+        0.9,
+        0.9
+      ],
+      "startingAnimation": "",
+      "zIndex": 501
     }
   ],
   "characters": {
@@ -167,7 +213,7 @@
       ],
       "scale": 1,
       "scroll": [
-        1,
+        1.1,
         1
       ],
       "zIndex": 300

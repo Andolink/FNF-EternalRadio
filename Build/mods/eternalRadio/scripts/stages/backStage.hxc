@@ -20,17 +20,11 @@ class BackStageStage extends Stage
 
 	var cadreBlood:FlxSprite; 
   	var clouds:FlxTiledSprite;
+	var pupil:StageProp;
 
 	override function buildStage()
 	{
 		super.buildStage();
-/*
-		clouds = new FlxTiledSprite(Paths.image('tankClouds'), 3200, 235, true, false);
-		clouds.setPosition(-1100, 20);
-		clouds.scrollFactor.set(0.25, 0.25);
-		clouds.zIndex = 12;
-
-		clouds.velocity.x = 8;*/
 
 		cadreBlood = new FlxSprite();
 		cadreBlood.loadGraphic(Paths.image('cadreBlood'));
@@ -39,10 +33,14 @@ class BackStageStage extends Stage
 		cadreBlood.width = FlxG.initialWidth;
 		cadreBlood.height = FlxG.initialHeight;
 		cadreBlood.zIndex = 600;
-
 		cadreBlood.cameras = [PlayState.instance.camHUD];
-
 		PlayState.instance.add(cadreBlood);
+
+		pupil = getNamedProp('tankEye');
+		var animLeft:FlxAnimation = pupil.animation.getByName('lookDad');
+		animLeft.looped = false;
+		var animRight:FlxAnimation = pupil.animation.getByName('lookBf');
+		animRight.looped = false;
 	}
 
 	function onUpdate(event:UpdateScriptEvent):Void
@@ -58,5 +56,49 @@ class BackStageStage extends Stage
 	function onSongRetry(event:ScriptEvent)
 	{
 		super.onSongRetry(event);
+	}
+
+	public override function onSongEvent(scriptEvent:SongEventScriptEvent)
+	{
+		super.onSongEvent(scriptEvent);
+
+		if (scriptEvent.eventData.eventKind == "FocusCamera")
+		{
+			var eventProps = scriptEvent.eventData.value;
+			switch (Std.parseInt(eventProps.char))
+			{
+				case 0:
+				movePupilsRight();
+				case 1:
+				movePupilsLeft();
+				default:
+			}
+		}
+	}
+
+
+	var pupilLeft:Bool = false; 
+
+	function movePupilsLeft():Void
+	{
+		if (pupilLeft) return;
+		trace('Move pupils left');
+		pupil.animation.play('lookDad');
+		pupilLeft = true;
+		/*
+		pupil.playAnimation('');
+		pupil.anim.curFrame = 0;*/
+		// pupilState = PUPIL_STATE_LEFT;
+	}
+
+	function movePupilsRight():Void
+	{
+		if (!pupilLeft) return;
+		trace('Move pupils right');
+		pupil.animation.play('lookBf');
+		pupilLeft = false;
+		/*pupil.playAnimation('');
+		pupil.anim.curFrame = 17;*/
+		// pupilState = PUPIL_STATE_NORMAL;
 	}
 }
