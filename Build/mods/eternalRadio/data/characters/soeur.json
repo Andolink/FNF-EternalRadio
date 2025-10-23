@@ -12,7 +12,7 @@
       "name": "idle",
       "prefix": "soeur idle",
       "offsets": [ 0, 0 ],
-      "frameIndices": [ 1, 2, 3, 4, 4, 4, 4],
+      "frameIndices": [ 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4 ],
       "frameRate": 12,
       "looped": false
     },
@@ -21,64 +21,32 @@
       "prefix": "soeur left",
       "offsets": [ 0, 0 ],
       "looped": false,
-      "frameIndices": [ 0, 1, 1, 1, 1, 1, 1, 1 ],
+      "frameIndices": [ 0, 1 ],
       "frameRate": 12
-    },
-    {
-      "name": "singLEFT-hold",
-      "prefix": "soeur left",
-      "looped": false,
-      "frameRate": 12,
-      "frameIndices": [ 0, 1, 1, 1, 1, 1, 1, 1 ],
-      "offsets": [ 0, 0 ]
     },
     {
       "name": "singDOWN",
       "prefix": "soeur down",
       "offsets": [ 0, 0 ],
       "looped": false,
-      "frameIndices": [ 0, 1, 1, 1, 1, 1, 1, 1 ],
+      "frameIndices": [ 0, 1 ],
       "frameRate": 12
-    },
-    {
-      "name": "singDOWN-hold",
-      "prefix": "soeur down",
-      "looped": false,
-      "frameRate": 12,
-      "frameIndices": [ 0, 1, 1, 1, 1, 1, 1, 1 ],
-      "offsets": [ 0, 0 ]
     },
     {
       "name": "singUP",
       "prefix": "soeur up",
       "offsets": [ 0, 0 ],
       "frameRate": 12,
-      "frameIndices": [ 0, 1, 1, 1, 1, 1, 1, 1 ],
+      "frameIndices": [ 0, 1 ],
       "looped": false
-    },
-    {
-      "name": "singUP-hold",
-      "prefix": "soeur up",
-      "looped": false,
-      "frameRate": 12,
-      "frameIndices": [ 0, 1, 1, 1, 1, 1, 1, 1 ],
-      "offsets": [ 0, 0 ]
     },
     {
       "name": "singRIGHT",
       "prefix": "soeur right",
       "frameRate": 12,
       "offsets": [ 0, 0 ],
-      "frameIndices": [ 0, 1, 1, 1, 1, 1, 1, 1 ],
+      "frameIndices": [ 0, 1 ],
       "looped": false
-    },
-    {
-      "name": "singRIGHT-hold",
-      "prefix": "soeur right",
-      "frameRate": 12,
-      "looped": false,
-      "frameIndices": [ 0, 1, 1, 1, 1, 1, 1, 1 ],
-      "offsets": [ 0, 0 ]
     }
   ]
 }

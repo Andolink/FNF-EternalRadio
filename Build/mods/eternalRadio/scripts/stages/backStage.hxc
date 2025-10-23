@@ -6,21 +6,70 @@ import funkin.play.PlayState;
 import funkin.play.stage.Stage;
 import flixel.addons.display.FlxTiledSprite;
 
+//shader dependencies
+import funkin.Conductor;
+import funkin.graphics.framebuffer.BitmapDataUtil;
+import funkin.graphics.framebuffer.FixedBitmapData;
+import funkin.graphics.shaders.OverlayBlend;
+import funkin.graphics.shaders.RuntimeRainShader;
+import funkin.modding.base.ScriptedFlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+import flixel.math.FlxMath;
+import flixel.math.FlxPoint;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
+import funkin.audio.FunkinSound;
+import funkin.audio.FunkinSound;
+import funkin.util.FlxTweenUtil;
+import StringTools;
+
+//
+import funkin.graphics.video.FunkinVideoSprite;
+import flixel.FlxCamera;
+
 class BackStageStage extends Stage
 {
+	
+/*
+	var rainShader:RuntimeRainShader = new RuntimeRainShader();
+	var rainShaderFilter:ShaderFilter;
+	var rainShaderStartIntensity:Float;
+	var rainShaderEndIntensity:Float;
+
+	var camVideos;
+    var videoIntro:FunkinVideoSprite;
+*/
+
+	var cadreBlood:FlxSprite; 
+  	var clouds:FlxTiledSprite;
+	var pupil:StageProp;
+
 	function new()
 	{
 		super('backStage');
 	}
 
-	function onCreate(event:ScriptEvent):Void
-	{
-		super.onCreate(event);
-	}
+    override function onCreate(event) {
+        super.onCreate(event);
+		
+		/*videoIntro = setUpVideos("billionMustShineCutscene");
 
-	var cadreBlood:FlxSprite; 
-  	var clouds:FlxTiledSprite;
-	var pupil:StageProp;
+        camVideos = new FlxCamera(0, 0, FlxG.width, FlxG.height);
+        camVideos.bgColor = 0x00000000;
+        FlxG.cameras.add(camVideos, false);
+
+		rainShader.scale = FlxG.height / 200; // adjust this value so that the rain looks nice
+
+		FlxG.console.registerObject("rainShader", rainShader);
+		rainShaderStartIntensity = 0.2;
+		rainShaderEndIntensity = 0.4;
+
+		rainShader.intensity = rainShaderStartIntensity;
+
+		rainShaderFilter = new ShaderFilter(rainShader);
+		FlxG.camera.filters = [rainShaderFilter];*/
+	}
 
 	override function buildStage()
 	{
@@ -46,11 +95,34 @@ class BackStageStage extends Stage
 	function onUpdate(event:UpdateScriptEvent):Void
 	{
 		super.onUpdate(event);
+/*
+		if (FlxG.sound.music != null)
+		{
+			var remappedIntensityValue:Float = FlxMath.remapToRange(Conductor.instance.songPosition, 0, FlxG.sound.music.length, rainShaderStartIntensity,
+				rainShaderEndIntensity);
+			rainShader.intensity = remappedIntensityValue;
+			rainShader.updateViewInfo(FlxG.width, FlxG.height, FlxG.camera);
+			rainShader.update(event.elapsed);
+		}
+		else
+		{
+			rainShader.intensity = rainShaderStartIntensity;
+			rainShader.updateViewInfo(FlxG.width, FlxG.height, FlxG.camera);
+			rainShader.update(event.elapsed);
+		}*/
 	}
 
 	function onBeatHit(event:SongTimeScriptEvent):Void
 	{
 		super.onBeatHit(event);
+	}
+
+	override function onStepHit(event:SongTimeScriptEvent) {
+		super.onStepHit(event);
+		switch (event.step) {
+			case 100:
+				//playVideo(videoIntro, Paths.videos("billionMustShineCutscene"));
+		}
 	}
 
 	function onSongRetry(event:ScriptEvent)
@@ -101,4 +173,50 @@ class BackStageStage extends Stage
 		pupil.anim.curFrame = 17;*/
 		// pupilState = PUPIL_STATE_NORMAL;
 	}
+	
+	//stollen from 2hot bf mix.
+/*
+ 	var allowPause = true;
+    override function onPause(event:PauseScriptEvent) {
+        if (!allowPause) event.cancel();
+        else super.onPause(event);
+    }
+
+    override function onNoteGhostMiss(event) {
+        super.onNoteGhostMiss(event);
+        if (!allowPause) {
+            event.cancel();
+            event.stopPropagation();
+        }
+    }
+
+ 	function setUpVideos(path:String) {
+        var video = new FunkinVideoSprite();
+        var p = path;
+        video.bitmap.onFormatSetup.add(function() {
+            if (video.bitmap != null && video.bitmap.bitmapData != null) {
+                video.camera = camVideos;
+                video.setGraphicSize(FlxG.width);
+                video.updateHitbox();
+                video.screenCenter();
+            }
+        });
+
+        video.bitmap.onEndReached.add(() -> {
+            video.stop();
+            PlayState.instance.remove(video);
+            video.destroy();
+            allowPause = true;
+        });
+        //video.load(path);
+        
+        PlayState.instance.add(video);
+        return video;
+    }
+
+    
+    function playVideo(video, path) {
+        if (video.load(path)) video.play();
+                        allowPause = false;
+    }*/
 }

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="tankEye.png">
-<SubTexture name="tankEye lookBf0000" x="0" y="0" width="141" height="133" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
-<SubTexture name="tankEye lookBf0001" x="141" y="0" width="141" height="133" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
-<SubTexture name="tankEye lookBf0002" x="0" y="133" width="141" height="133" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
-<SubTexture name="tankEye lookBf0003" x="141" y="133" width="141" height="133" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
-<SubTexture name="tankEye lookBf0004" x="282" y="0" width="141" height="133" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
-<SubTexture name="tankEye lookDad0000" x="282" y="133" width="141" height="133" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
-<SubTexture name="tankEye lookDad0001" x="0" y="266" width="141" height="133" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
-<SubTexture name="tankEye lookDad0002" x="141" y="266" width="141" height="133" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
-<SubTexture name="tankEye lookDad0003" x="0" y="0" width="141" height="133" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
+<SubTexture name="tankEye lookBf0000" x="0" y="0" width="157" height="149" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
+<SubTexture name="tankEye lookBf0001" x="157" y="0" width="157" height="149" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
+<SubTexture name="tankEye lookBf0002" x="0" y="149" width="157" height="149" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
+<SubTexture name="tankEye lookBf0003" x="157" y="149" width="157" height="149" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
+<SubTexture name="tankEye lookBf0004" x="314" y="0" width="157" height="149" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
+<SubTexture name="tankEye lookDad0000" x="314" y="149" width="157" height="149" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
+<SubTexture name="tankEye lookDad0001" x="0" y="298" width="157" height="149" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
+<SubTexture name="tankEye lookDad0002" x="157" y="298" width="157" height="149" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
+<SubTexture name="tankEye lookDad0003" x="0" y="0" width="157" height="149" frameX="0" frameY="0" frameWidth="141" frameHeight="133" />
 </TextureAtlas>

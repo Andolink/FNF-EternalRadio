@@ -1,0 +1,14 @@
+import funkin.graphics.adobeanimate.FlxAtlasSprite;
+import flixel.FlxG;
+import funkin.audio.FunkinSound;
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.Preferences;
+import funkin.util.Constants;
+
+class SoeurCharacter extends MultiSparrowCharacter
+{
+  function new()
+  {
+    super('soeur');
+  }
+}
