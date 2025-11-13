@@ -6,6 +6,7 @@ import funkin.FunkinMemory;
 import flixel.math.FlxMath;
 import haxe.ds.ArraySort;
 import funkin.modding.PolymodErrorHandler;
+import funkin.Conductor;
 
 class GltichedNote extends NoteKind
 {
@@ -33,83 +34,47 @@ class GltichedNote extends NoteKind
             _strumline.customRenderDistanceMs = 2000;
             _strumline.useCustomRenderDistance = true;
 
-            var _currentTime = 0;
-            var _noteFound:NoteSprite = null;
-            
             var _allNotes = _strumline.notes.members.filter(function(a:NoteSprite) {
                 return a != null;
             });
             
             ArraySort.sort(_allNotes, function(a:NoteSprite, b:NoteSprite):Int {
-            return a.strumTime - b.strumTime;
+                return a.strumTime - b.strumTime;
             });
+            
+            var _currentTimeGlobal = Conductor.instance.songPosition;
 
-            for (_glitchedNote in _strumline.notes.members) {
+            for (_glitchedNote in _allNotes) {
 
-                if (_glitchedNote != null && _glitchedNote.noteData.kind == "glitched")
+                if (_glitchedNote != null && _glitchedNote.noteData.kind == "glitched" && _currentTimeGlobal < _glitchedNote.strumTime)
                 {
-                    if (_noteFound == null || _currentTime > _glitchedNote.strumTime)
-                    {
-                        _noteFound      = _glitchedNote;
-                        _currentTime    = _glitchedNote.strumTime;
-                    }
-                }
-            }
+                    _currentTime    = _glitchedNote.strumTime;
+                    _offset         = 0.0;
 
-            if (_noteFound == null) { 
-                lastNote[_dataIndex] = null;
-
-                if (offsetNeeded[_dataIndex] > 0) {
-                    offsetNeeded[_dataIndex] = FlxMath.lerp(offsetNeeded[_dataIndex],0,0.5);
-                }
-            }
-            else {
-                if (lastNote[_dataIndex] != _noteFound)
-                {
-                    lastNote        [_dataIndex] = _noteFound;
-                    nextNoteFound   [_dataIndex] = false;
-                    lastOffsetStart [_dataIndex] = _noteFound.strumTime;
-                }
-            }
-
-            if (_strumline.notes.members != null) {
-
-                for (note in _strumline.notes.members) {
-                    if (note != null) {
-                        
-                        if (lastOffsetStart[_dataIndex] != -1 && note.strumTime > lastOffsetStart[_dataIndex]) {
+                    for (note in _allNotes) {
+                        if (note != null) {
                             
-                            if (lastNote[_dataIndex] != null)
-                            {
-                                if (nextNoteFound[_dataIndex] == false)
-                                {
-                                    offsetNeeded[_dataIndex] = note.y - lastNote[_dataIndex].y;
-                                    nextNoteFound[_dataIndex] = true;
-                                }
+                            var _isYounger = (note.strumTime > _glitchedNote.strumTime);
 
-                                if (note.y <= lastNote[_dataIndex].y)
-                                {
-                                    note.yOffset = -10000;
-                                    continue;
-                                }
+                            if (_isYounger) {
+                                
+                                if (_offset == 0.0)  { _offset = note.y - _glitchedNote.y; }
                             }
 
-                            
-                            note.yOffset = -offsetNeeded[_dataIndex];
-                        }
-                        else {
-                            note.yOffset = 0.0;
+                            note.y -= _offset;
+
+                            if (_isYounger && note.y <= _glitchedNote.y)
+                            {
+                                note.y = -10000;
+                            }
                         }
                     }
-                }
 
-                for (note in _strumline.holdNotes.members) {
-                    if (note != null) {
-                        if (lastOffsetStart[_dataIndex] != -1 && note.strumTime > lastOffsetStart[_dataIndex]) {
-                            yOffset = -offsetNeeded[_dataIndex];
-                        }
-                        else {
-                            note.yOffset = 0.0;
+                    for (note in _strumline.holdNotes.members) {
+                        if (note != null) {
+                            if (note.strumTime > _glitchedNote.strumTime) {
+                                note.y -= _offset;
+                            }
                         }
                     }
                 }
