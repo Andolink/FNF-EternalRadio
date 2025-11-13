@@ -1,0 +1,47 @@
+import funkin.play.PlayState;
+import funkin.Conductor;
+import flixel.FlxG;
+import flixel.FlxCamera;
+import funkin.modding.PolymodErrorHandler;
+import funkin.play.event.SongEvent;
+import funkin.play.event.ScriptedSongEvent;
+import funkin.ui.options.OptionsState;
+import funkin.modding.module.ModuleHandler;
+import funkin.modding.module.ScriptedModule;
+import funkin.data.event.SongEventRegistry;
+import funkin.save.Save;
+
+class GlitchNoteEvent extends ScriptedSongEvent {
+  function new() {
+    super("soeur-events-glitchNoteEvent");
+  }
+
+  public var eventTitle:String = "Soeur Events | Glitch Note";
+  public var isEnabled = null;
+
+  override function handleEvent(data):Void {
+    if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+    if (PlayState.instance.isMinimalMode) return;
+
+    
+  }
+
+  public override function getTitle() { return eventTitle; }
+
+  public override function getIconPath(){ return 'ui/chart-editor/events/glitchNoteEvent'; }
+
+  override function getEventSchema(){
+    return [
+      {
+        name: 'noteEffectCount',
+        title: 'Note Effect Count',
+        defaultValue: 1,
+        step: 1,
+        min: 1,
+        type: "float",
+        units: 'steps'
+      },
+    ];
+  }
+}
+

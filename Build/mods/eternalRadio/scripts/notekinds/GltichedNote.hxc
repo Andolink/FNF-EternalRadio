@@ -1,0 +1,181 @@
+import funkin.play.notes.notekind.NoteKind;
+import funkin.audio.FunkinSound;
+import funkin.play.PlayState;
+import funkin.Highscore;
+import funkin.FunkinMemory;
+import flixel.math.FlxMath;
+import haxe.ds.ArraySort;
+import funkin.modding.PolymodErrorHandler;
+
+class GltichedNote extends NoteKind
+{
+    // List of notes that have already been dodged
+
+    private var handledNotes:Array = [];
+
+    public function new(noteKind:String, description:String = "", ?noteStyleId:String, ?params:Array)
+    {
+        super("glitched", "Glitched Note", "glitched", []);
+    /*
+        FunkinMemory.permanentCacheSound(Paths.sound("gunshot", "shared"));
+        FunkinMemory.permanentCacheSound(Paths.sound("gunshotPierce", "shared"));
+        FunkinMemory.permanentCacheSound(Paths.sound("hankshoot", "shared"));*/
+    }
+
+    public var offsetNeeded = [0.0,0.0];
+    public var lastOffsetStart = [-1,-1];
+    public var lastNote:NoteSprite = [null,null];
+    public var nextNoteFound:Bool = [false,false];
+
+    public function UpdateStrumline(_strumline:Strumline, _dataIndex:Int) {
+        if (_strumline != null)
+        {
+            _strumline.customRenderDistanceMs = 2000;
+            _strumline.useCustomRenderDistance = true;
+
+            var _currentTime = 0;
+            var _noteFound:NoteSprite = null;
+            
+            var _allNotes = _strumline.notes.members.filter(function(a:NoteSprite) {
+                return a != null;
+            });
+            
+            ArraySort.sort(_allNotes, function(a:NoteSprite, b:NoteSprite):Int {
+            return a.strumTime - b.strumTime;
+            });
+
+            for (_glitchedNote in _strumline.notes.members) {
+
+                if (_glitchedNote != null && _glitchedNote.noteData.kind == "glitched")
+                {
+                    if (_noteFound == null || _currentTime > _glitchedNote.strumTime)
+                    {
+                        _noteFound      = _glitchedNote;
+                        _currentTime    = _glitchedNote.strumTime;
+                    }
+                }
+            }
+
+            if (_noteFound == null) { 
+                lastNote[_dataIndex] = null;
+
+                if (offsetNeeded[_dataIndex] > 0) {
+                    offsetNeeded[_dataIndex] = FlxMath.lerp(offsetNeeded[_dataIndex],0,0.5);
+                }
+            }
+            else {
+                if (lastNote[_dataIndex] != _noteFound)
+                {
+                    lastNote        [_dataIndex] = _noteFound;
+                    nextNoteFound   [_dataIndex] = false;
+                    lastOffsetStart [_dataIndex] = _noteFound.strumTime;
+                }
+            }
+
+            if (_strumline.notes.members != null) {
+
+                for (note in _strumline.notes.members) {
+                    if (note != null) {
+                        
+                        if (lastOffsetStart[_dataIndex] != -1 && note.strumTime > lastOffsetStart[_dataIndex]) {
+                            
+                            if (lastNote[_dataIndex] != null)
+                            {
+                                if (nextNoteFound[_dataIndex] == false)
+                                {
+                                    offsetNeeded[_dataIndex] = note.y - lastNote[_dataIndex].y;
+                                    nextNoteFound[_dataIndex] = true;
+                                }
+
+                                if (note.y <= lastNote[_dataIndex].y)
+                                {
+                                    note.yOffset = -10000;
+                                    continue;
+                                }
+                            }
+
+                            
+                            note.yOffset = -offsetNeeded[_dataIndex];
+                        }
+                        else {
+                            note.yOffset = 0.0;
+                        }
+                    }
+                }
+
+                for (note in _strumline.holdNotes.members) {
+                    if (note != null) {
+                        if (lastOffsetStart[_dataIndex] != -1 && note.strumTime > lastOffsetStart[_dataIndex]) {
+                            yOffset = -offsetNeeded[_dataIndex];
+                        }
+                        else {
+                            note.yOffset = 0.0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public function onUpdate(event:UpdateScriptEvent):Void {
+        UpdateStrumline(PlayState.instance.opponentStrumline,1);
+
+        UpdateStrumline(PlayState.instance.playerStrumline,0);
+    }
+
+    function onNoteHit(event:HitNoteScriptEvent)
+    {
+
+        if (event.note.noteData.kind == "glitched")
+        {
+/*
+        // MARK as handled and CANCEL immediately
+
+        handledNotes.push(event.note);
+        event.cancelEvent();
+
+        // DELETE note before any engine animation
+        
+        PlayState.instance.playerStrumline.killNote(event.note);
+
+        Highscore.tallies.totalNotes--;
+       
+        var player = PlayState.instance.currentStage.getBoyfriend();
+
+        // Play sound and animation
+        
+        FunkinSound.playOnce(Paths.sound("hankshoot"));
+
+        player.playAnimation("dodgeBlammed", true);
+       
+        return;
+ */
+        }
+
+        super.onNoteHit(event);
+
+    }
+
+    function onNoteMiss(event:NoteScriptEvent)
+    {
+        if (event.note.noteData.kind == "glitched")
+        {
+ /*
+            // IGNORE if it has already been handled
+            if (handledNotes.indexOf(event.note) != -1)
+            {
+                event.cancelEvent();
+                return;
+            }
+
+            event.cancelEvent();
+           
+            PlayState.instance.playerStrumline.killNote(event.note);
+
+            FunkinSound.playOnce(Paths.sound("gunshotPierce"));
+
+            PlayState.instance.health = -1;
+            */
+        }
+    }
+}

@@ -1,9 +1,12 @@
 import funkin.play.song.Song;
-import funkin.play.PlayState;
 import funkin.Paths;
 import funkin.play.cutscene.VideoCutscene;
-
 import funkin.play.PlayStatePlaylist;
+
+import funkin.play.PlayState;
+import funkin.play.notes.NoteSprite;
+import funkin.play.notes.Strumline;
+import flixel.math.FlxMath;
 
 class BillionMustShineSong extends Song {
   var hasPlayedCutscene:Bool;
@@ -29,6 +32,48 @@ class BillionMustShineSong extends Song {
       startVideo();
     }
 	}
+
+  var offsetNeeded:Float = 0.0;
+  var previousY:Float = 0.0;
+
+  public override function onUpdate(event:UpdateScriptEvent):Void {
+    var _strumline = PlayState.instance.opponentStrumline;
+    _strumline.customRenderDistanceMs = 2000;
+    _strumline.useCustomRenderDistance = true;
+
+    if (_strumline.notes.members != null)
+    {
+      var _offsetStart = 14000.0;
+
+      previousY = 0;
+
+      for (note in _strumline.notes.members) {
+        if (note != null)
+        {
+          if (note.strumTime > _offsetStart)
+          {
+            if (offsetNeeded == 0.0 && previousY != 0.0)
+            {
+                offsetNeeded = note.y - previousY;
+            }
+            note.yOffset = -offsetNeeded;
+          }
+          else {
+            previousY = note.y;
+            note.yOffset = 0.0;
+          }
+        }
+      }
+
+      if (previousY == 0)
+      {
+        if (offsetNeeded > 0 )
+        {
+          offsetNeeded = FlxMath.lerp(offsetNeeded,0,0.85);
+        }
+      }
+    }
+  }
 
   function startVideo() {
     VideoCutscene.play(Paths.videos('billionMustShineCutscene'));
